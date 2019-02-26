@@ -9,6 +9,7 @@ public void draw() {
   background(16, 180, 245);
 
   game.loop();
+  println(frameRate);
 }
 
 public void mouseMoved() {

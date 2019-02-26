@@ -10,7 +10,7 @@ class Cloud {
   this.x = width + random(0, 200);
   this.y = random(0, height / 4);
   
-  this.image = loadImage("cloud-1.png");
+  this.image = loadImage("resources/img/cloud-1.png");
   this.w = image.width * 0.5;
   this.h = image.height * 0.5;
  }

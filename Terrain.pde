@@ -7,12 +7,10 @@ class Terrain {
 
   public Terrain() {
     this.grassElements = new ArrayList();
-    this.grassImage = loadImage("grass.png");
-
+    this.grassImage = loadImage("resources/img/grass.png");
     this.clouds = new ArrayList();
 
     int amountGrassElements = (int) width / (int) this.grassW;
-
 
     for (int i = 0; i < amountGrassElements * 2; i++) {
       Grass grass = new Grass(grassImage, i * this.grassW);
@@ -21,17 +19,16 @@ class Terrain {
   }
 
   public void update(float xSpeed) {
-    if(frameCount % 160 == 0)
+    if (frameCount % 160 == 0)
       this.clouds.add(new Cloud()); 
-  
+
     for (Cloud cloud : this.clouds) {
       cloud.show();
       cloud.update(xSpeed);
     }
 
-    for (Grass grass : this.grassElements) {
+    for (Grass grass : this.grassElements)
       grass.update(xSpeed);
-    }
 
     Grass firstElement = this.grassElements.get(0);
 
@@ -49,8 +46,7 @@ class Terrain {
     fill(137, 87, 55);
     rect(0, height - grassH / 2, width, height);
 
-    for (Grass grass : this.grassElements) {
+    for (Grass grass : this.grassElements)
       grass.show();
-    }
   }
 }

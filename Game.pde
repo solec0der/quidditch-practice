@@ -2,7 +2,7 @@ class Game {
   private Player player;
   private Terrain terrain;
   private ArrayList<Hoop> hoops;
-  private float gameXSpeed = 3;
+  private float gameXSpeed = 5;
   private float xSpeedIncreaser = 1;
   private float xSpeedDecreaser = 5;
 
@@ -28,23 +28,19 @@ class Game {
       hoop.update(gameXSpeed);
     }
 
-    if (frameCount % 240 == 0) {
+    if (frameCount % 240 == 0)
       this.hoops.add(new Hoop());
-    }
-    
+
     checkHoopPassing();
-    
   }
 
   public void checkHoopPassing() {
-   for (Hoop hoop: hoops) {
-    if(hoop.hasPassed(player)) {
-      gameXSpeed += xSpeedIncreaser;
-    } else if(hoop.hasMissed(player)) {
-      gameXSpeed = xSpeedDecreaser >= gameXSpeed ? 3 : (gameXSpeed -= xSpeedDecreaser);
+    for (Hoop hoop : hoops) {
+      if (hoop.hasPassed(player))
+        gameXSpeed += xSpeedIncreaser;
+      else if (hoop.hasMissed(player))
+        gameXSpeed = xSpeedDecreaser >= gameXSpeed ? 3 : (gameXSpeed -= xSpeedDecreaser);
     }
-    
-   }
   }
 
   public Player getPlayer() {
