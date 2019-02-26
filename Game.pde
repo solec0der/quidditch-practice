@@ -1,4 +1,6 @@
 class Game {
+  private QuidditchPractice context;
+  private AudioManager backgroundMusic;
   private Player player;
   private Terrain terrain;
   private ArrayList<Hoop> hoops;
@@ -6,10 +8,13 @@ class Game {
   private float xSpeedIncreaser = 1;
   private float xSpeedDecreaser = 5;
 
-  public Game() {
+  public Game(QuidditchPractice context) {
+    this.context = context;
     this.player = new Player();
     this.terrain = new Terrain();
     this.hoops = new ArrayList();
+    this.backgroundMusic = new AudioManager("resources/audio/hogwarts_march.mp3", context);
+    this.backgroundMusic.play();
   }
 
   public void loop() {
@@ -39,7 +44,7 @@ class Game {
       if (hoop.hasPassed(player))
         gameXSpeed += xSpeedIncreaser;
       else if (hoop.hasMissed(player))
-        gameXSpeed = xSpeedDecreaser >= gameXSpeed ? 3 : (gameXSpeed -= xSpeedDecreaser);
+        gameXSpeed = xSpeedDecreaser >= gameXSpeed ? 5 : (gameXSpeed - xSpeedDecreaser);
     }
   }
 

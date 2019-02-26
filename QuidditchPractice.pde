@@ -1,8 +1,9 @@
 Game game;
 
+
 public void setup() {
   size(1280, 720);
-  game = new Game();
+  game = new Game(this);
 }
 
 public void draw() {
@@ -13,10 +14,8 @@ public void draw() {
 }
 
 public void mouseMoved() {
- game.getPlayer().setTargetY(mouseY); 
+  game.getPlayer().setTargetY(mouseY);
 }
 
 public void keyPressed() {
-  
- 
 }
