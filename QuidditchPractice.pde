@@ -1,6 +1,5 @@
 Game game;
 
-
 public void setup() {
   size(1280, 720);
   game = new Game(this);
@@ -21,6 +20,13 @@ public void keyPressed() {
       game.pauseGame();
     else
       game.resumeGame();
+    break;
+  case 's':
+    if (!game.getSpellSelection().isVisible())
+      game.getSpellSelection().activateSpellSelection();
+    else 
+    game.getSpellSelection().deactivateSpellSelection();
+
     break;
   }
 }

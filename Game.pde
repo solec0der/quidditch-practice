@@ -3,17 +3,20 @@ class Game {
   private AudioManager backgroundMusic;
   private Player player;
   private Terrain terrain;
+  private SpellSelection spellSelection;
   private ArrayList<Hoop> hoops;
   private float gameXSpeed = 5;
   private float xSpeedIncreaser = 1;
   private float xSpeedDecreaser = 5;
   private boolean isPlaying = true;
   private boolean hasRenderedSnapshot = false;
+  
 
   public Game(QuidditchPractice context) {
     this.context = context;
     this.player = new Player();
     this.terrain = new Terrain();
+    this.spellSelection = new SpellSelection();
     this.hoops = new ArrayList();
     this.backgroundMusic = new AudioManager("resources/audio/hogwarts_march.mp3", context);
     this.backgroundMusic.play();
@@ -39,6 +42,9 @@ class Game {
 
       if (frameCount % 240 == 0)
         this.hoops.add(new Hoop());
+        
+      if(spellSelection.isVisible())
+        spellSelection.show();
 
       checkHoopPassing();
     } else {
@@ -84,6 +90,10 @@ class Game {
       else if (hoop.hasMissed(player))
         gameXSpeed = xSpeedDecreaser >= gameXSpeed ? 5 : (gameXSpeed - xSpeedDecreaser);
     }
+  }
+  
+  public SpellSelection getSpellSelection() {
+   return this.spellSelection; 
   }
 
   public Player getPlayer() {
