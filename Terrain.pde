@@ -22,10 +22,8 @@ class Terrain {
     if (frameCount % 160 == 0)
       this.clouds.add(new Cloud()); 
 
-    for (Cloud cloud : this.clouds) {
-      cloud.show();
+    for (Cloud cloud : this.clouds)
       cloud.update(xSpeed);
-    }
 
     for (Grass grass : this.grassElements)
       grass.update(xSpeed);
@@ -45,6 +43,10 @@ class Terrain {
     noStroke();
     fill(137, 87, 55);
     rect(0, height - grassH / 2, width, height);
+
+    for (Cloud cloud : this.clouds)
+      cloud.show();
+    
 
     for (Grass grass : this.grassElements)
       grass.show();

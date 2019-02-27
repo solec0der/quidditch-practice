@@ -7,10 +7,7 @@ public void setup() {
 }
 
 public void draw() {
-  background(16, 180, 245);
-
   game.loop();
-  println(frameRate);
 }
 
 public void mouseMoved() {
@@ -18,4 +15,12 @@ public void mouseMoved() {
 }
 
 public void keyPressed() {
+  switch (key) {
+  case 'p':
+    if (game.isPlaying())
+      game.pauseGame();
+    else
+      game.resumeGame();
+    break;
+  }
 }

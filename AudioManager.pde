@@ -13,4 +13,8 @@ class AudioManager {
   public void play() {
     player.play();
   }
+  
+  public void pause() {
+    player.pause();
+  }
 }

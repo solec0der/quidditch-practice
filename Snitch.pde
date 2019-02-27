@@ -1,8 +1,14 @@
 class Snitch {
- private float snitchX;
- private float snitchY;
- private float snitchW;
- private float snitchH;
- 
- 
+  private float x;
+  private float y;
+  private float w;
+  private float h;
+  
+  private float xSpeed;
+  
+  public Snitch() {
+    
+  }
+  
+  
 }

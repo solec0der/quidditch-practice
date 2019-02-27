@@ -36,7 +36,7 @@ class Hoop {
   }
 
   public void update(float xSpeed) {
-    this.x -= xSpeed;
+    this.x -= xSpeed * 1.2;
   }
 
   public boolean hasPassed(Player player) {
@@ -57,12 +57,11 @@ class Hoop {
 
   public boolean hasMissed(Player player) {
     if (!hasMissed) {
-      
       float playerX = player.getX();
       float playerY = player.getY();
       float playerW = player.getW();
       float playerH = player.getH();
-      
+
       if (playerX + playerW > x + w) {
         this.hasMissed = true;
         return true;

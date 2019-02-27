@@ -7,6 +7,8 @@ class Game {
   private float gameXSpeed = 5;
   private float xSpeedIncreaser = 1;
   private float xSpeedDecreaser = 5;
+  private boolean isPlaying = true;
+  private boolean hasRenderedSnapshot = false;
 
   public Game(QuidditchPractice context) {
     this.context = context;
@@ -18,25 +20,61 @@ class Game {
   }
 
   public void loop() {
-    this.terrain.show();
-    this.terrain.update(gameXSpeed);
+    if (isPlaying) {
+      background(16, 180, 245);
+      this.terrain.show();
+      this.terrain.update(gameXSpeed);
 
-    for (Hoop hoop : hoops)
-      hoop.showLeft();
+      for (Hoop hoop : hoops)
+        hoop.showLeft();
 
-    this.player.show();
-    this.player.update();
+      this.player.show();
+      this.player.update();
 
-    for (Hoop hoop : hoops) {
-      hoop.showRight();
-      hoop.showStand();
-      hoop.update(gameXSpeed);
+      for (Hoop hoop : hoops) {
+        hoop.showRight();
+        hoop.showStand();
+        hoop.update(gameXSpeed);
+      }
+
+      if (frameCount % 240 == 0)
+        this.hoops.add(new Hoop());
+
+      checkHoopPassing();
+    } else {
+      if (!hasRenderedSnapshot) {
+        background(16, 180, 245);
+        this.terrain.show();
+
+        for (Hoop hoop : hoops)
+          hoop.showLeft();
+
+        this.player.show();
+
+        for (Hoop hoop : hoops) {
+          hoop.showRight();
+          hoop.showStand();
+        }
+        this.hasRenderedSnapshot = true;
+      }
     }
+  }
 
-    if (frameCount % 240 == 0)
-      this.hoops.add(new Hoop());
+  public boolean isPlaying() {
+    return this.isPlaying;
+  }
 
-    checkHoopPassing();
+  public void pauseGame() {
+    this.isPlaying = false;
+    this.backgroundMusic.pause();
+    AudioManager pauseSound = new AudioManager("resources/audio/pause.mp3", context);
+    pauseSound.play();
+  }
+
+  public void resumeGame() {
+    this.backgroundMusic.play();
+    this.isPlaying = true;
+    this.hasRenderedSnapshot = false;
   }
 
   public void checkHoopPassing() {

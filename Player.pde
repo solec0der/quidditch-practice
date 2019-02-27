@@ -8,7 +8,6 @@ class Player {
 
   public Player() {
     this.playerImage = new Animation("resources/img/harry_on_broom/harry_on_broom_", 3);
-    
 
     this.w = this.playerImage.getWidth() / 2.5;
     this.h = this.playerImage.getHeight() / 2.5;
@@ -19,7 +18,6 @@ class Player {
 
   public void show() {
     this.playerImage.display(this.x, this.y, this.w, this.h);
-    // image(this.playerImage, this.x, this.y, this.w, this.h);
   } 
 
   public void update() {
