@@ -9,6 +9,7 @@ class SpellSelection {
   private float h;
   private float wandW;
   private float wandH;
+  private String[] possibleShortcuts = {"Q", "W", "E", "R", "T", "Z"};
 
   public SpellSelection(QuidditchPractice context) {
     this.context = context;
@@ -53,7 +54,7 @@ class SpellSelection {
       rect(width - elementWidth - marginWidth, currentYPosition, elementWidth, elementHeight);
       fill(255);
       textAlign(CENTER);
-      text(spell.getName(), width - elementWidth - marginWidth + elementWidth / 2, currentYPosition + elementHeight / 2);
+      text("[" + possibleShortcuts[i] + "] " + spell.getName(), width - elementWidth - marginWidth + elementWidth / 2, currentYPosition + elementHeight / 2);
 
       if (i == activeSpellIndex) {
         image(this.wandCursor, width - elementWidth - marginWidth + elementWidth * 0.95, currentYPosition + elementHeight / 2, this.wandW, this.wandH);
@@ -76,6 +77,13 @@ class SpellSelection {
   public void executeSpell() {
     Spell activeSpell = this.availableSpells.get(this.activeSpellIndex);
     activeSpell.playSpellAudio();
+  }
+
+  public void executeSpellShortcut(int index) {
+	if(this.availableSpells.size() - 1 >= index) {
+    	Spell activeSpell = this.availableSpells.get(index);
+   		activeSpell.playSpellAudio();
+	}
   }
 
   public void nextSpell() {

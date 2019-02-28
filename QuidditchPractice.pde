@@ -23,8 +23,34 @@ public void keyPressed() {
       game.getSpellSelection().executeSpell(); 
     break;
 
-  case 38:
-    game.getSpellSelection().previousSpell();
+  case 81:
+    if (game.getSpellSelection().isVisible())
+      game.getSpellSelection().executeSpellShortcut(0);	
+    break;
+
+  case 87:
+    if (game.getSpellSelection().isVisible())
+      game.getSpellSelection().executeSpellShortcut(1);	
+    break;
+
+  case 69:
+    if (game.getSpellSelection().isVisible())
+      game.getSpellSelection().executeSpellShortcut(2);	
+    break;
+
+  case 82:
+    if (game.getSpellSelection().isVisible())
+      game.getSpellSelection().executeSpellShortcut(3);	
+    break;
+
+  case 84:
+    if (game.getSpellSelection().isVisible())
+      game.getSpellSelection().executeSpellShortcut(4);	
+    break;
+
+  case 90:
+    if (game.getSpellSelection().isVisible())
+      game.getSpellSelection().executeSpellShortcut(5);	
     break;
 
   case 40:
