@@ -9,8 +9,8 @@ class Cursor {
     this.mouseImage = loadImage("resources/img/wand_cursor.png");
     this.mouseX  = mouseX;
     this.mouseY  = mouseY;
-    this.mouseW = this.mouseImage.width * 0.25;
-    this.mouseH = this.mouseImage.height * 0.25;
+    this.mouseW = this.mouseImage.width * 0.125;
+    this.mouseH = this.mouseImage.height * 0.125;
   }
 
   public void show() {

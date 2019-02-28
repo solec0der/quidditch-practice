@@ -4,7 +4,6 @@ public void setup() {
   size(1280, 720);
   // fullScreen();
   game = new Game(this);
-  
 }
 
 public void draw() {
@@ -19,11 +18,11 @@ public void mouseMoved() {
 
 public void keyPressed() {
   switch(keyCode) {
-  case 37:
+  case 38:
     game.getSpellSelection().previousSpell();
     break;
 
-  case 39:
+  case 40:
     game.getSpellSelection().nextSpell();
     break;
   case 80:
@@ -37,7 +36,7 @@ public void keyPressed() {
     if (!game.getSpellSelection().isVisible())
       game.getSpellSelection().activateSpellSelection();
     else 
-      game.getSpellSelection().deactivateSpellSelection();
+    game.getSpellSelection().deactivateSpellSelection();
     break;
   }
 }

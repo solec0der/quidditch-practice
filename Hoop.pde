@@ -63,6 +63,7 @@ class Hoop {
       float playerH = player.getH();
 
       if (playerX + playerW > x + w) {
+        this.hasPassed = true;
         this.hasMissed = true;
         return true;
       }
