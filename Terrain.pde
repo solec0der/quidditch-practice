@@ -1,6 +1,7 @@
 class Terrain {
   private ArrayList<Grass> grassElements; 
   private ArrayList<Cloud> clouds;
+
   private float grassW = 50;
   private float grassH = 50;
   private PImage grassImage;
@@ -12,7 +13,7 @@ class Terrain {
 
     int amountGrassElements = (int) width / (int) this.grassW;
 
-    for (int i = 0; i < amountGrassElements * 2; i++) {
+    for (int i = 0; i < amountGrassElements * 1.05; i++) {
       Grass grass = new Grass(grassImage, i * this.grassW);
       grassElements.add(grass);
     }
@@ -39,6 +40,7 @@ class Terrain {
     }
   }
 
+
   public void show() {
     noStroke();
     fill(137, 87, 55);
@@ -46,7 +48,7 @@ class Terrain {
 
     for (Cloud cloud : this.clouds)
       cloud.show();
-    
+
     for (Grass grass : this.grassElements)
       grass.show();
   }

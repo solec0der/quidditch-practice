@@ -13,8 +13,16 @@ class AudioManager {
   public void play() {
     player.play();
   }
-  
+
   public void pause() {
     player.pause();
+  }
+
+  public void reduceVolume() {
+    player.setGain(-20);
+  }
+
+  public void restoreVolume() {
+    player.setGain(0);
   }
 }

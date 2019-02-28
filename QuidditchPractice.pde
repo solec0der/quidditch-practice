@@ -18,6 +18,11 @@ public void mouseMoved() {
 
 public void keyPressed() {
   switch(keyCode) {
+  case ENTER:
+    if (game.getSpellSelection().isVisible())
+      game.getSpellSelection().executeSpell(); 
+    break;
+
   case 38:
     game.getSpellSelection().previousSpell();
     break;

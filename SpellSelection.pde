@@ -1,5 +1,6 @@
 class SpellSelection {
 
+  private QuidditchPractice context;
   private boolean isVisible = false;
   private ArrayList<Spell> availableSpells;
   private int activeSpellIndex = 0;
@@ -9,17 +10,19 @@ class SpellSelection {
   private float wandW;
   private float wandH;
 
-  public SpellSelection() {
+  public SpellSelection(QuidditchPractice context) {
+    this.context = context;
+
     this.availableSpells = new ArrayList();
 
     PFont myFont = createFont("PMono", 10);
     textFont(myFont);
 
-    this.availableSpells.add(new Spell("Sectumsempra", 252, 37, 77));
-    this.availableSpells.add(new Spell("Reducto", 37, 227, 252));
+    this.availableSpells.add(new Spell("Sectumsempra", "resources/audio/sectumsempra.wav", context));
+    this.availableSpells.add(new Spell("Reducto", "resources/audio/reducto.wav", context));
 
     this.wandCursor = loadImage("resources/img/wand_cursor.png");
-    
+
     this.wandW = this.wandCursor.width * 0.125;
     this.wandH = this.wandCursor.height * 0.125;
 
@@ -40,7 +43,7 @@ class SpellSelection {
 
     float currentYPosition = height - containerHeight - marginHeight;
 
-    
+
 
     for (int i = 0; i < elements; i++) {
       Spell spell = this.availableSpells.get(i);
@@ -51,11 +54,11 @@ class SpellSelection {
       fill(255);
       textAlign(CENTER);
       text(spell.getName(), width - elementWidth - marginWidth + elementWidth / 2, currentYPosition + elementHeight / 2);
-      
-      if(i == activeSpellIndex) {
-       image(this.wandCursor, width - elementWidth - marginWidth + elementWidth * 0.95, currentYPosition + elementHeight / 2, this.wandW, this.wandH); 
+
+      if (i == activeSpellIndex) {
+        image(this.wandCursor, width - elementWidth - marginWidth + elementWidth * 0.95, currentYPosition + elementHeight / 2, this.wandW, this.wandH);
       }
-      
+
       currentYPosition += marginHeight / 2 + elementHeight;
     }
   }
@@ -68,6 +71,11 @@ class SpellSelection {
 
   public void deactivateSpellSelection() {
     this.isVisible = false;
+  }
+
+  public void executeSpell() {
+    Spell activeSpell = this.availableSpells.get(this.activeSpellIndex);
+    activeSpell.playSpellAudio();
   }
 
   public void nextSpell() {

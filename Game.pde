@@ -16,7 +16,7 @@ class Game {
     this.context = context;
     this.player = new Player();
     this.terrain = new Terrain();
-    this.spellSelection = new SpellSelection();
+    this.spellSelection = new SpellSelection(context);
     this.cursor = new Cursor(mouseX, mouseY);
     this.hoops = new ArrayList();
     this.backgroundMusic = new AudioManager("resources/audio/hogwarts_march.mp3", context);
@@ -24,8 +24,7 @@ class Game {
   }
 
   public void loop() {
-
-    background(16, 180, 245);
+	background(16, 180, 245);
     this.terrain.show();
 
     for (Hoop hoop : hoops)
@@ -128,8 +127,9 @@ class Game {
         gameXSpeed += xSpeedIncreaser;
         println("ja");
       } else if (hoop.hasMissed(player)) {
-        gameXSpeed = xSpeedDecreaser - gameXSpeed < 5 ? 5 : (gameXSpeed - xSpeedDecreaser);
+        gameXSpeed = gameXSpeed - xSpeedDecreaser < 5 ? 5 : (gameXSpeed - xSpeedDecreaser);
         println("nein");
+        println(gameXSpeed);
       }
     }
   }

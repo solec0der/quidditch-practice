@@ -1,30 +1,20 @@
 class Spell {
   private String name;
-  // Colors
-  private int r;
-  private int g;
-  private int b;
+  private QuidditchPractice context;
+  private String spellAudioPath;
 
-  public Spell(String name, int r, int g, int b) {
+  public Spell(String name, String spellAudioPath, QuidditchPractice context) {
     this.name = name;
-    this.r = r;
-    this.g = g;
-    this.b = b;
+    this.context = context;
+    this.spellAudioPath = spellAudioPath;
   }
 
   public String getName() {
     return this.name;
   }
-  
-  public int getR() {
-    return this.r;
-  }
-  
-  public int getG() {
-    return this.g;
-  }
-  
-  public int getB() {
-    return this.b;
+
+  public void playSpellAudio() {
+    AudioManager spellAudio = new AudioManager(spellAudioPath, context);
+    spellAudio.play();
   }
 }
