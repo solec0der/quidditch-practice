@@ -14,14 +14,22 @@ public void mouseMoved() {
 }
 
 public void keyPressed() {
-  switch (key) {
-  case 'p':
+  switch(keyCode) {
+  case 37:
+    game.getSpellSelection().previousSpell();
+    break;
+
+  case 39:
+    game.getSpellSelection().nextSpell();
+    break;
+  case 80:
     if (game.isPlaying())
       game.pauseGame();
     else
       game.resumeGame();
     break;
-  case 's':
+
+  case 83:
     if (!game.getSpellSelection().isVisible())
       game.getSpellSelection().activateSpellSelection();
     else 

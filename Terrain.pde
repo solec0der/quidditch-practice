@@ -47,7 +47,6 @@ class Terrain {
     for (Cloud cloud : this.clouds)
       cloud.show();
     
-
     for (Grass grass : this.grassElements)
       grass.show();
   }
